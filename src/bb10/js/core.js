@@ -120,7 +120,12 @@ bb = {
 		bb.toggle = _bb10_toggle;
 		bb.contextMenu = (bb.device.isPlayBook || bb.device.isRipple) ? _PlayBook_contextMenu : _bb10_contextMenu;
 		bb.actionOverflow = _PlayBook_contextMenu;
-			
+		
+                //blackberry.event is deprecated in cordova, events are added to document
+                if (!blackberry.event) { 
+                    blackberry.event = document; 
+                }
+	
 		// Add our keyboard listener for BB10
 		if (!bb.device.isPlayBook && !bb.device.isRipple && !bb.device.is720x720) {
 			// Hide our action bar when the keyboard is about to pop up
